@@ -39,10 +39,6 @@
     <maven.compiler.target>1.6</maven.compiler.target>
     <encoding>UTF-8</encoding>
   </properties>
-  <build>
-    <sourceDirectory>src</sourceDirectory>
-    <testSourceDirectory>src</testSourceDirectory>
-  </build>
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
