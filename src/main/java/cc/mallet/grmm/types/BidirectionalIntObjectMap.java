@@ -22,16 +22,16 @@ import java.util.Iterator;
  * are desrialized from the same file are ==.  This avoids memory leaks,
  * because MALLET Alphabets are retained in memory forever.
  */
-public class BidirectionalIntObjectMap implements Serializable {
+public class BidirectionalIntObjectMap<T> implements Serializable {
 
-  gnu.trove.map.hash.TObjectIntHashMap map;
-  ArrayList entries;
+  gnu.trove.map.hash.TObjectIntHashMap<T> map;
+  ArrayList<T> entries;
   boolean growthStopped = false;
 
   public BidirectionalIntObjectMap (int capacity)
   {
-    this.map = new gnu.trove.map.hash.TObjectIntHashMap (capacity);
-    this.entries = new ArrayList (capacity);
+    this.map = new TObjectIntHashMap<T> (capacity);
+    this.entries = new ArrayList<T> (capacity);
   }
 
   public BidirectionalIntObjectMap ()
@@ -39,17 +39,17 @@ public class BidirectionalIntObjectMap implements Serializable {
     this (8);
   }
 
-  public BidirectionalIntObjectMap (BidirectionalIntObjectMap other)
+  public BidirectionalIntObjectMap (BidirectionalIntObjectMap<T> other)
   {
-    map = new TObjectIntHashMap(other.map);
-    entries = (ArrayList) other.entries.clone ();
+    map = new TObjectIntHashMap<T>(other.map);
+    entries = (ArrayList<T>) other.entries.clone ();
     growthStopped = other.growthStopped;
   }
 
   /**
    * Return -1 if entry isn't present.
    */
-  public int lookupIndex (Object entry, boolean addIfNotPresent)
+  public int lookupIndex (T entry, boolean addIfNotPresent)
   {
     if (entry == null) {
       throw new IllegalArgumentException ("Can't lookup \"null\" in an Alphabet.");
@@ -66,19 +66,19 @@ public class BidirectionalIntObjectMap implements Serializable {
     return retIndex;
   }
 
-  public int lookupIndex (Object entry)
+  public int lookupIndex (T entry)
   {
     return lookupIndex (entry, true);
   }
 
-  public Object lookupObject (int index)
+  public T lookupObject (int index)
   {
     return entries.get (index);
   }
 
-  public Object[] toArray ()
+  public T[] toArray ()
   {
-    return entries.toArray ();
+    return (T[]) entries.toArray ();
   }
 
   /**
@@ -88,7 +88,7 @@ public class BidirectionalIntObjectMap implements Serializable {
    * it used.  The returned array is such that for all entries <tt>obj</tt>,
    * <tt>ret[lookupIndex(obj)] = obj</tt> .
    */
-  public Object[] toArray (Object[] in)
+  public T[] toArray (T[] in)
   {
     return entries.toArray (in);
   }
@@ -99,9 +99,9 @@ public class BidirectionalIntObjectMap implements Serializable {
     return entries.iterator ();
   }
 
-  public Object[] lookupObjects (int[] indices)
+  public T[] lookupObjects (int[] indices)
   {
-    Object[] ret = new Object[indices.length];
+    T[] ret = (T[]) new Object[indices.length];
     for (int i = 0; i < indices.length; i++)
       ret[i] = entries.get (indices[i]);
     return ret;
@@ -114,14 +114,14 @@ public class BidirectionalIntObjectMap implements Serializable {
    * @param buf     An array to store the returned objects in.
    * @return An array of values from this Alphabet.  The runtime type of the array is the same as buf
    */
-  public Object[] lookupObjects (int[] indices, Object[] buf)
+  public T[] lookupObjects (int[] indices, T[] buf)
   {
     for (int i = 0; i < indices.length; i++)
       buf[i] = entries.get (indices[i]);
     return buf;
   }
 
-  public int[] lookupIndices (Object[] objects, boolean addIfNotPresent)
+  public int[] lookupIndices (T[] objects, boolean addIfNotPresent)
   {
     int[] ret = new int[objects.length];
     for (int i = 0; i < objects.length; i++)
@@ -129,7 +129,7 @@ public class BidirectionalIntObjectMap implements Serializable {
     return ret;
   }
 
-  public boolean contains (Object entry)
+  public boolean contains (T entry)
   {
     return map.contains (entry);
   }
@@ -200,10 +200,10 @@ public class BidirectionalIntObjectMap implements Serializable {
   {
     in.readInt ();  // int version
     int size = in.readInt ();
-    entries = new ArrayList (size);
-    map = new gnu.trove.map.hash.TObjectIntHashMap (size);
+    entries = new ArrayList<T> (size);
+    map = new gnu.trove.map.hash.TObjectIntHashMap<T> (size);
     for (int i = 0; i < size; i++) {
-      Object o = in.readObject ();
+      T o = (T) in.readObject ();
       map.put (o, i);
       entries. add (o);
     }

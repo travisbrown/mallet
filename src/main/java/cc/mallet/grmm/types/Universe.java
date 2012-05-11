@@ -86,18 +86,18 @@ public class Universe implements Serializable {
 
   // this can get dangerous if variables are thrown away willy nilly (as in test cases) -cas
 
-  static THashMap allProjectionCaches = new THashMap ();
+  static THashMap<List<Integer>, TIntObjectHashMap<int[]>> allProjectionCaches = new THashMap<List<Integer>, TIntObjectHashMap<int[]>> ();
 
-  public TIntObjectHashMap lookupProjectionCache (VarSet varSet)
+  public TIntObjectHashMap<int[]> lookupProjectionCache (VarSet varSet)
   {
-    List sizes = new ArrayList (varSet.size ());
+    List<Integer> sizes = new ArrayList<Integer> (varSet.size ());
     for (int vi = 0; vi < varSet.size (); vi++) {
       sizes.add (varSet.get(vi).getNumOutcomes ());
     }
 
-    TIntObjectHashMap result = (TIntObjectHashMap) allProjectionCaches.get (sizes);
+    TIntObjectHashMap<int[]> result = allProjectionCaches.get (sizes);
     if (result == null) {
-      result = new TIntObjectHashMap ();
+      result = new TIntObjectHashMap<int[]> ();
       allProjectionCaches.put (sizes, result);
     }
 

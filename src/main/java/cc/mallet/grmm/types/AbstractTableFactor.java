@@ -416,7 +416,7 @@ public abstract class AbstractTableFactor implements DiscreteFactor {
    *  get ugly.  I think everything is all right at the moment, but keep
    *  it in mind if inexplicable bugs show up in the future. -cas
    */
-  transient private TIntObjectHashMap projectionCache; // lazily constructed
+  transient private TIntObjectHashMap<int[]> projectionCache; // lazily constructed
 
   private void initializeProjectionCache ()
   {
@@ -524,9 +524,9 @@ public abstract class AbstractTableFactor implements DiscreteFactor {
   private int[] cachedLargeIdxToSmall (DiscreteFactor smallPotential)
   {
     int hashval = computeSubsetHashValue (smallPotential);
-    Object ints = projectionCache.get (hashval);
+    int[] ints = projectionCache.get (hashval);
     if (ints != null) {
-      return (int[]) ints;
+      return ints;
     } else {
       int[] projection = computeLargeIdxToSmall (smallPotential);
       projectionCache.put (hashval, projection);
@@ -919,7 +919,7 @@ public abstract class AbstractTableFactor implements DiscreteFactor {
   private void readObject (ObjectInputStream in) throws IOException, ClassNotFoundException {
      in.defaultReadObject ();
     // rerun initializers of transient fields
-     projectionCache = new TIntObjectHashMap ();
+     projectionCache = new TIntObjectHashMap<int[]> ();
   }
 
   public void divideBy (double v)
