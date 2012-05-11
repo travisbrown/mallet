@@ -39,24 +39,24 @@ import java.rmi.dgc.VMID;
  * @see Instance
  * @see cc.mallet.pipe.Pipe
  */
-public class Alphabet implements Serializable
+public class Alphabet<T> implements Serializable
 {
-	TObjectIntHashMap map;
-	ArrayList entries;
+	TObjectIntHashMap<T> map;
+	ArrayList<T> entries;
 	boolean growthStopped = false;
-	Class entryClass = null;
+	//Class entryClass = null;
 	VMID instanceId = new VMID();  //used in readResolve to identify persitent instances
 
-	public Alphabet (int capacity, Class entryClass)
+	public Alphabet (int capacity)
 	{
-		this.map = new gnu.trove.map.hash.TObjectIntHashMap (capacity);
-		this.entries = new ArrayList (capacity);
-		this.entryClass = entryClass;
+		this.map = new TObjectIntHashMap<T> (capacity);
+		this.entries = new ArrayList<T> (capacity);
+		//this.entryClass = entryClass;
 		// someone could try to deserialize us into this image (e.g., by RMI).  Handle this.
 		deserializedEntries.put (instanceId, this);
 	}
 
-	public Alphabet (Class entryClass)
+	/*public Alphabet (Class entryClass)
 	{
 		this (8, entryClass);
 	}
@@ -64,16 +64,16 @@ public class Alphabet implements Serializable
 	public Alphabet (int capacity)
 	{
 		this (capacity, null);
-	}
+	}*/
 
 	public Alphabet ()
 	{
-		this (8, null);
+		this (8);
 	}
 	
-	public Alphabet (Object[] entries) {
+	public Alphabet (T[] entries) {
 		this (entries.length);
-		for (Object entry : entries)
+		for (T entry : entries)
 			this.lookupIndex(entry);
 	}
 
@@ -81,11 +81,11 @@ public class Alphabet implements Serializable
 	{
 		//try {
 		// Wastes effort, because we over-write ivars we create
-		Alphabet ret = new Alphabet ();
-		ret.map = new TObjectIntHashMap(map);
-		ret.entries = (ArrayList) entries.clone();
+		Alphabet<T> ret = new Alphabet<T> ();
+		ret.map = new TObjectIntHashMap<T>(map);
+		ret.entries = (ArrayList<T>) entries.clone();
 		ret.growthStopped = growthStopped;
-		ret.entryClass = entryClass;
+		//ret.entryClass = entryClass;
 		return ret;
 		//} catch (CloneNotSupportedException e) {
 		//e.printStackTrace();
@@ -94,11 +94,11 @@ public class Alphabet implements Serializable
 	}
 
 	/** Return -1 if entry isn't present. */
-	public int lookupIndex (Object entry, boolean addIfNotPresent)
+	public int lookupIndex (T entry, boolean addIfNotPresent)
 	{
 		if (entry == null)
 			throw new IllegalArgumentException ("Can't lookup \"null\" in an Alphabet.");
-		if (entryClass == null)
+		/*if (entryClass == null)
 			entryClass = entry.getClass();
 		else
 			// Insist that all entries in the Alphabet are of the same
@@ -106,6 +106,7 @@ public class Alphabet implements Serializable
 			// bunch of easily-made errors.
 			if (entry.getClass() != entryClass)
 				throw new IllegalArgumentException ("Non-matching entry class, "+entry.getClass()+", was "+entryClass);
+    */
 
 		int retIndex = -1;
 		if (map.containsKey( entry )) {
@@ -119,18 +120,18 @@ public class Alphabet implements Serializable
 		return retIndex;
 	}
 
-	public int lookupIndex (Object entry)
+	public int lookupIndex (T entry)
 	{
 		return lookupIndex (entry, true);
 	}
 
-	public Object lookupObject (int index)
+	public T lookupObject (int index)
 	{
 		return entries.get(index);
 	}
 
-	public Object[] toArray () {
-		return entries.toArray();
+	public T[] toArray () {
+		return (T[]) entries.toArray();
 	}
 
 	/**
@@ -140,18 +141,18 @@ public class Alphabet implements Serializable
 	 *  it used.  The returned array is such that for all entries <tt>obj</tt>,
 	 *  <tt>ret[lookupIndex(obj)] = obj</tt> .
 	 */ 
-	public Object[] toArray (Object[] in) {
+	public T[] toArray (T[] in) {
 		return entries.toArray (in);
 	}
 
 	// xxx This should disable the iterator's remove method...
-	public Iterator iterator () {
+	public Iterator<T> iterator () {
 		return entries.iterator();
 	}
 
-	public Object[] lookupObjects (int[] indices)
+	public T[] lookupObjects (int[] indices)
 	{
-		Object[] ret = new Object[indices.length];
+		T[] ret = (T[]) new Object[indices.length];
 		for (int i = 0; i < indices.length; i++)
 			ret[i] = entries.get(indices[i]);
 		return ret;
@@ -163,14 +164,14 @@ public class Alphabet implements Serializable
 	 * @param buf An array to store the returned objects in.
 	 * @return An array of values from this Alphabet.  The runtime type of the array is the same as buf
 	 */
-	public Object[] lookupObjects (int[] indices, Object[] buf)
+	public T[] lookupObjects (int[] indices, T[] buf)
 	{
 		for (int i = 0; i < indices.length; i++)
 			buf[i] = entries.get(indices[i]);
 		return buf;
 	}
 
-	public int[] lookupIndices (Object[] objects, boolean addIfNotPresent)
+	public int[] lookupIndices (T[] objects, boolean addIfNotPresent)
 	{
 		int[] ret = new int[objects.length];
 		for (int i = 0; i < objects.length; i++)
@@ -178,7 +179,7 @@ public class Alphabet implements Serializable
 		return ret;
 	}
 
-	public boolean contains (Object entry)
+	public boolean contains (T entry)
 	{
 		return map.contains (entry);
 	}
@@ -201,11 +202,6 @@ public class Alphabet implements Serializable
 	public boolean growthStopped ()
 	{
 		return growthStopped;
-	}
-
-	public Class entryClass ()
-	{
-		return entryClass;
 	}
 
 	/** Return String representation of all Alphabet entries, each
@@ -260,28 +256,28 @@ public class Alphabet implements Serializable
 		for (int i = 0; i < entries.size(); i++)
 			out.writeObject (entries.get(i));
 		out.writeBoolean (growthStopped);
-		out.writeObject (entryClass);
+		//out.writeObject (entryClass);
 		out.writeObject(instanceId);
 	}
 
 	private void readObject (ObjectInputStream in) throws IOException, ClassNotFoundException {
 		int version = in.readInt ();
 		int size = in.readInt();
-		entries = new ArrayList (size);
-		map = new gnu.trove.map.hash.TObjectIntHashMap (size);
+		entries = new ArrayList<T> (size);
+		map = new gnu.trove.map.hash.TObjectIntHashMap<T> (size);
 		for (int i = 0; i < size; i++) {
-			Object o = in.readObject();
+			T o = (T) in.readObject();
 			map.put (o, i);
 			entries. add (o);
 		}
 		growthStopped = in.readBoolean();
-		entryClass = (Class) in.readObject();
+		//entryClass = (Class) in.readObject();
 		if (version >0 ){ // instanced id added in version 1S
 			instanceId = (VMID) in.readObject();
 		}
 	}
 
-	private transient static HashMap deserializedEntries = new HashMap();
+	private transient static HashMap<VMID, Alphabet> deserializedEntries = new HashMap<VMID, Alphabet>();
 	/**
 	 * This gets called after readObject; it lets the object decide whether
 	 * to return itself or return a previously read in version.
@@ -292,7 +288,7 @@ public class Alphabet implements Serializable
 	 */
 
 	public Object readResolve() throws ObjectStreamException {
-		Object previous = deserializedEntries.get(instanceId);
+		Alphabet previous = deserializedEntries.get(instanceId);
 		if (previous != null){
 			//System.out.println(" ***Alphabet ReadResolve:Resolving to previous instance. instance id= " + instanceId);
 			return previous;

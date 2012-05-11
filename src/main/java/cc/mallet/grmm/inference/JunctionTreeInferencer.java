@@ -199,8 +199,8 @@ public class JunctionTreeInferencer extends AbstractInferencer {
   private void triangulate(final UndirectedGraph mdl)
   {
     UndirectedGraph mdl2 = dupGraph (mdl);
-    ArrayList vars = new ArrayList(mdl.vertexSet());
-    Alphabet varMap = makeVertexMap(vars);
+    ArrayList<Variable> vars = new ArrayList<Variable>(mdl.vertexSet());
+    Alphabet<Variable> varMap = makeVertexMap(vars);
     cliques = new ArrayList();
 
     // debug
@@ -254,10 +254,10 @@ public class JunctionTreeInferencer extends AbstractInferencer {
   }
 
 
-  private Alphabet makeVertexMap(ArrayList vars)
+  private Alphabet<Variable> makeVertexMap(ArrayList<Variable> vars)
   {
-    Alphabet map = new Alphabet (vars.size (), Variable.class);
-    map.lookupIndices(vars.toArray(), true);
+    Alphabet<Variable> map = new Alphabet<Variable> (vars.size ());
+    map.lookupIndices(vars.toArray(new Variable[vars.size()]), true);
     return map;
   }
 
