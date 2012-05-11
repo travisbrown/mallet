@@ -1,4 +1,4 @@
-package cc.mallet.classify.tests;
+package cc.mallet.classify;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

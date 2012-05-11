@@ -1,4 +1,4 @@
-package cc.mallet.util.tests;
+package cc.mallet.util;
 
 import cc.mallet.util.search.*;
 import junit.framework.*;

@@ -4,7 +4,7 @@
    This software is provided under the terms of the Common Public License,
    version 1.0, as published by http://www.opensource.org.  For further
    information, see the file `LICENSE' included with this distribution. */
-package cc.mallet.extract.test;
+package cc.mallet.extract;
 
 import junit.framework.*;
 

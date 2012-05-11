@@ -12,7 +12,7 @@
    @author Aron Culotta <a href="mailto:culotta@cs.umass.edu">culotta@cs.umass.edu</a>
  */
 
-package cc.mallet.pipe.tests;
+package cc.mallet.pipe;
 
 import junit.framework.*;
 import java.util.ArrayList;

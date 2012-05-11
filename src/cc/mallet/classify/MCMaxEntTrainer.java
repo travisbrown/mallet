@@ -20,7 +20,7 @@ import cc.mallet.classify.Classifier;
 import cc.mallet.optimize.LimitedMemoryBFGS;
 import cc.mallet.optimize.Optimizable;
 import cc.mallet.optimize.Optimizer;
-import cc.mallet.optimize.tests.*;
+//import cc.mallet.optimize.tests.*;
 import cc.mallet.pipe.Pipe;
 import cc.mallet.types.Alphabet;
 import cc.mallet.types.ExpGain;

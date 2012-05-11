@@ -5,7 +5,7 @@
  version 1.0, as published by http://www.opensource.org.  For further
  information, see the file `LICENSE' included with this distribution. */
 
-package cc.mallet.optimize.tests;
+package cc.mallet.optimize;
 
 import cc.mallet.optimize.*;
 import junit.framework.TestCase;

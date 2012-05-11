@@ -5,7 +5,7 @@
    version 1.0, as published by http://www.opensource.org.  For further
    information, see the file `LICENSE' included with this distribution. */
 
-package cc.mallet.grmm.test;
+package cc.mallet.grmm;
 
 import junit.framework.AssertionFailedError;
 import junit.framework.Test;
@@ -26,7 +26,7 @@ import cc.mallet.grmm.util.ModelReader;
 import cc.mallet.types.Dirichlet;
 import cc.mallet.types.Matrix;
 import cc.mallet.types.Matrixn;
-import cc.mallet.types.tests.TestSerializable;
+import cc.mallet.types.TestSerializable;
 import cc.mallet.util.*;
 //import cc.mallet.util.Random;
 

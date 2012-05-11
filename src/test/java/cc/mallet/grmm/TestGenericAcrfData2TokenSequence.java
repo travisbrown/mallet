@@ -1,4 +1,4 @@
-package cc.mallet.grmm.test;
+package cc.mallet.grmm;
 
 import junit.framework.TestCase;
 import junit.framework.Test;
@@ -13,7 +13,7 @@ import cc.mallet.grmm.learning.GenericAcrfData2TokenSequence;
 import cc.mallet.pipe.Pipe;
 import cc.mallet.pipe.iterator.LineGroupIterator;
 import cc.mallet.types.*;
-import cc.mallet.types.tests.TestSerializable;
+import cc.mallet.types.TestSerializable;
 
 
 /**

@@ -9,7 +9,7 @@
  @author Andrew McCallum <a href="mailto:mccallum@cs.umass.edu">mccallum@cs.umass.edu</a>
  */
 
-package cc.mallet.fst.tests;
+package cc.mallet.fst;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -57,19 +57,8 @@ import cc.mallet.pipe.iterator.LineGroupIterator;
 import cc.mallet.pipe.tsf.OffsetConjunctions;
 import cc.mallet.pipe.tsf.TokenText;
 
-import cc.mallet.fst.CRF;
-import cc.mallet.fst.CRFTrainerByLabelLikelihood;
-import cc.mallet.fst.CRFTrainerByStochasticGradient;
-import cc.mallet.fst.MaxLattice;
-import cc.mallet.fst.MaxLatticeDefault;
-import cc.mallet.fst.SumLattice;
-import cc.mallet.fst.SumLatticeDefault;
-import cc.mallet.fst.SumLatticeScaling;
-import cc.mallet.fst.TokenAccuracyEvaluator;
-import cc.mallet.fst.Transducer;
-
 import cc.mallet.optimize.Optimizable;
-import cc.mallet.optimize.tests.TestOptimizable;
+import cc.mallet.optimize.TestOptimizable;
 
 import cc.mallet.util.FileUtils;
 

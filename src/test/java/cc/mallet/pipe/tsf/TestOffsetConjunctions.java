@@ -12,7 +12,7 @@
    @author Andrew McCallum <a href="mailto:mccallum@cs.umass.edu">mccallum@cs.umass.edu</a>
  */
 
-package cc.mallet.pipe.tsf.tests;
+package cc.mallet.pipe.tsf;
 
 import junit.framework.*;
 import java.util.regex.*;

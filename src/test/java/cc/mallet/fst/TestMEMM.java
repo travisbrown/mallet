@@ -1,4 +1,4 @@
-package cc.mallet.fst.tests;
+package cc.mallet.fst;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,7 +23,7 @@ import cc.mallet.types.LabelAlphabet;
 import cc.mallet.types.LabelSequence;
 import cc.mallet.types.MatrixOps;
 import cc.mallet.types.Sequence;
-import cc.mallet.types.tests.TestSerializable;
+import cc.mallet.types.TestSerializable;
 
 import cc.mallet.pipe.CharSequence2TokenSequence;
 import cc.mallet.pipe.Pipe;
@@ -35,12 +35,8 @@ import cc.mallet.pipe.iterator.ArrayIterator;
 import cc.mallet.pipe.tsf.OffsetConjunctions;
 import cc.mallet.pipe.tsf.TokenText;
 
-import cc.mallet.fst.MEMM;
-import cc.mallet.fst.MEMMTrainer;
-import cc.mallet.fst.SumLatticeDefault;
-
 import cc.mallet.optimize.Optimizable;
-import cc.mallet.optimize.tests.TestOptimizable;
+import cc.mallet.optimize.TestOptimizable;
 
 import cc.mallet.extract.StringSpan;
 import cc.mallet.extract.StringTokenization;

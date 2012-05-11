@@ -1,4 +1,4 @@
-package cc.mallet.types.tests;
+package cc.mallet.types;
 
 import org.junit.Before; 
 import org.junit.Ignore; 

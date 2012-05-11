@@ -18,7 +18,7 @@ import java.util.logging.*;
 
 import cc.mallet.optimize.LineOptimizer;
 import cc.mallet.optimize.Optimizable;
-import cc.mallet.optimize.tests.TestOptimizable;
+//import cc.mallet.optimize.tests.TestOptimizable;
 import cc.mallet.types.MatrixOps;
 import cc.mallet.util.MalletLogger;
 

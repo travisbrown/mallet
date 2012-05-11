@@ -19,7 +19,7 @@ import cc.mallet.optimize.Optimizable;
 import cc.mallet.optimize.OptimizationException;
 import cc.mallet.optimize.Optimizer;
 import cc.mallet.optimize.OrthantWiseLimitedMemoryBFGS;
-import cc.mallet.optimize.tests.*;
+//import cc.mallet.optimize.tests.*;
 import cc.mallet.pipe.Pipe;
 import cc.mallet.types.Alphabet;
 import cc.mallet.types.ExpGain;

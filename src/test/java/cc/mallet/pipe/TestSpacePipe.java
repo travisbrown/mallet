@@ -5,7 +5,7 @@
    version 1.0, as published by http://www.opensource.org.  For further
    information, see the file `LICENSE' included with this distribution. */
 
-package cc.mallet.pipe.tests;
+package cc.mallet.pipe;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -13,8 +13,7 @@ import junit.framework.TestSuite;
 
 import java.io.*;
 
-import cc.mallet.fst.tests.TestCRF;
-import cc.mallet.pipe.*;
+import cc.mallet.fst.TestCRF;
 import cc.mallet.pipe.iterator.*;
 import cc.mallet.pipe.tsf.*;
 import cc.mallet.types.InstanceList;

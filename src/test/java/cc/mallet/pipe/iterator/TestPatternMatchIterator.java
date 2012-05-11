@@ -12,7 +12,7 @@
    @author Aron Culotta <a href="mailto:culotta@cs.umass.edu">culotta@cs.umass.edu</a>
  */
 
-package cc.mallet.pipe.iterator.tests;
+package cc.mallet.pipe.iterator;
 
 import junit.framework.*;
 import java.util.Iterator;

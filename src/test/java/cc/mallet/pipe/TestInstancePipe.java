@@ -12,18 +12,17 @@
    @author Andrew McCallum <a href="mailto:mccallum@cs.umass.edu">mccallum@cs.umass.edu</a>
  */
 
-package cc.mallet.pipe.tests;
+package cc.mallet.pipe;
 
 import junit.framework.*;
 import java.util.ArrayList;
 import java.util.regex.*;
 import java.io.IOException;
 
-import cc.mallet.pipe.*;
 import cc.mallet.pipe.iterator.*;
 import cc.mallet.pipe.tsf.*;
 import cc.mallet.types.*;
-import cc.mallet.types.tests.TestSerializable;
+import cc.mallet.types.TestSerializable;
 
 public class TestInstancePipe extends TestCase
 {

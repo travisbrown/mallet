@@ -12,7 +12,7 @@
    @author Andrew McCallum <a href="mailto:mccallum@cs.umass.edu">mccallum@cs.umass.edu</a>
  */
 
-package cc.mallet.classify.tests;
+package cc.mallet.classify;
 
 //import edu.umass.cs.mallet.base.pipe.SerialPipe;
 import junit.framework.*;

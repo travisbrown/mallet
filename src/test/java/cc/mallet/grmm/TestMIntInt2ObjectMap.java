@@ -4,14 +4,14 @@
    This software is provided under the terms of the Common Public License,
    version 1.0, as published by http://www.opensource.org.  For further
    information, see the file `LICENSE' included with this distribution. */
-package cc.mallet.grmm.test;
+package cc.mallet.grmm;
 
 import junit.framework.*;
 
 import java.io.IOException;
 
 import cc.mallet.grmm.util.MIntInt2ObjectMap;
-import cc.mallet.types.tests.TestSerializable;
+import cc.mallet.types.TestSerializable;
 
 /**
  * Created: Dec 14, 2005

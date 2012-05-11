@@ -12,7 +12,7 @@
    @author Andrew McCallum <a href="mailto:mccallum@cs.umass.edu">mccallum@cs.umass.edu</a>
  */
 
-package cc.mallet.types.tests;
+package cc.mallet.types;
 
 import junit.framework.*;
 

@@ -12,7 +12,7 @@
    @author Andrew McCallum <a href="mailto:mccallum@cs.umass.edu">mccallum@cs.umass.edu</a>
  */
 
-package cc.mallet.optimize.tests;
+package cc.mallet.optimize;
 
 import junit.framework.*;
 import java.util.logging.*;

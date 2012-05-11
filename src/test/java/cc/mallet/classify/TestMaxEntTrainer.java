@@ -12,14 +12,13 @@
    @author Andrew McCallum <a href="mailto:mccallum@cs.umass.edu">mccallum@cs.umass.edu</a>
  */
 
-package cc.mallet.classify.tests;
+package cc.mallet.classify;
 
 import junit.framework.*;
 import java.net.URI;
 
-import cc.mallet.classify.*;
 import cc.mallet.optimize.Optimizable;
-import cc.mallet.optimize.tests.TestOptimizable;
+import cc.mallet.optimize.TestOptimizable;
 import cc.mallet.pipe.*;
 import cc.mallet.pipe.iterator.ArrayIterator;
 import cc.mallet.types.*;

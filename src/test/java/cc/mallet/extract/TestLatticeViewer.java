@@ -4,7 +4,7 @@
    This software is provided under the terms of the Common Public License,
    version 1.0, as published by http://www.opensource.org.  For further
    information, see the file `LICENSE' included with this distribution. */
-package cc.mallet.extract.test;
+package cc.mallet.extract;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -21,8 +21,8 @@ import cc.mallet.fst.MEMM;
 import cc.mallet.fst.MEMMTrainer;
 import cc.mallet.fst.TokenAccuracyEvaluator;
 import cc.mallet.fst.TransducerEvaluator;
-import cc.mallet.fst.tests.TestCRF;
-import cc.mallet.fst.tests.TestMEMM;
+import cc.mallet.fst.TestCRF;
+import cc.mallet.fst.TestMEMM;
 import cc.mallet.pipe.Pipe;
 import cc.mallet.pipe.SerialPipes;
 import cc.mallet.pipe.iterator.ArrayIterator;

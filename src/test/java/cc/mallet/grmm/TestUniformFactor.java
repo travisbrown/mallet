@@ -5,7 +5,7 @@
    version 1.0, as published by http://www.opensource.org.  For further
    information, see the file `LICENSE' included with this distribution. */
 
-package cc.mallet.grmm.test;
+package cc.mallet.grmm;
 
 import junit.framework.*;
 

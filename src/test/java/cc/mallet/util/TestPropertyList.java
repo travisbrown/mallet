@@ -12,7 +12,7 @@
    @author Andrew McCallum <a href="mailto:mccallum@cs.umass.edu">mccallum@cs.umass.edu</a>
  */
 
-package cc.mallet.util.tests;
+package cc.mallet.util;
 
 import cc.mallet.util.PropertyList;
 import junit.framework.*;

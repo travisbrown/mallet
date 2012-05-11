@@ -5,7 +5,7 @@
    version 1.0, as published by http://www.opensource.org.  For further
    information, see the file `LICENSE' included with this distribution. */
 
-package cc.mallet.pipe.tsf.tests;
+package cc.mallet.pipe.tsf;
 
 import junit.framework.*;
 
@@ -18,14 +18,11 @@ import cc.mallet.pipe.PrintInputAndTarget;
 import cc.mallet.pipe.SerialPipes;
 import cc.mallet.pipe.SimpleTaggerSentence2TokenSequence;
 import cc.mallet.pipe.iterator.ArrayIterator;
-import cc.mallet.pipe.tsf.OffsetFeatureConjunction;
-import cc.mallet.pipe.tsf.RegexMatches;
-import cc.mallet.pipe.tsf.TokenText;
 import cc.mallet.types.Instance;
 import cc.mallet.types.InstanceList;
 import cc.mallet.types.Token;
 import cc.mallet.types.TokenSequence;
-import cc.mallet.types.tests.TestSerializable;
+import cc.mallet.types.TestSerializable;
 
 /**
  * $Id: TestOffsetFeatureConjunctions.java,v 1.1 2007/10/22 21:37:57 mccallum Exp $
