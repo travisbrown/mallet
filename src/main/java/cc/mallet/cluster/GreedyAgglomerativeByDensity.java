@@ -8,7 +8,7 @@ import cc.mallet.pipe.Pipe;
 import cc.mallet.types.Instance;
 import cc.mallet.util.MalletProgressMessageLogger;
 
-import gnu.trove.TIntArrayList;
+import gnu.trove.list.array.TIntArrayList;
 
 /**
  * Greedily merges Instances until convergence. New merges are scored
@@ -136,6 +136,7 @@ public class GreedyAgglomerativeByDensity extends GreedyAgglomerative {
 		if (unclusteredInstances == null)
 			fillUnclusteredInstances(clustering.getNumInstances());
 		instanceBeingClustered = (unclusteredInstances.size() == 0) ? -1 :
+														 unclusteredInstances.get(0);		
 														 unclusteredInstances.remove(0);		
 	}
 

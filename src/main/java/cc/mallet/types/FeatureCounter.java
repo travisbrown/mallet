@@ -4,11 +4,11 @@ package cc.mallet.types;
 public class FeatureCounter 
 {
 	Alphabet alphabet;
-	gnu.trove.TIntIntHashMap featureCounts;
+	gnu.trove.map.hash.TIntIntHashMap featureCounts;
 	
 	public FeatureCounter (Alphabet alphabet) {
 		this.alphabet = alphabet;
-		featureCounts = new gnu.trove.TIntIntHashMap();
+		featureCounts = new gnu.trove.map.hash.TIntIntHashMap();
 	}
 	
 	public int increment (Object entry) {

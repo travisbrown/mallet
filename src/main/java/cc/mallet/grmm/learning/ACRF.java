@@ -16,7 +16,10 @@ import java.io.*;
 import java.util.*;
 import java.util.regex.Pattern;
 
-import gnu.trove.*;
+import gnu.trove.list.array.TIntArrayList;
+import gnu.trove.list.array.TDoubleArrayList;
+import gnu.trove.map.hash.THashMap;
+import gnu.trove.map.hash.TObjectIntHashMap;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.JDOMException;
@@ -797,7 +800,7 @@ public class ACRF implements Serializable {
         residTmp.add (Factors.distLinf (unif, ptl));
       }
 
-      lastResids = residTmp.toNativeArray ();
+      lastResids = residTmp.toArray ();
     }
 
     /** Adds FACTOR to this graph, but while maintaining the invariant that every set of variables has
@@ -1990,7 +1993,7 @@ public class ACRF implements Serializable {
       idxs.add (idx);
       vals.add (val);
     }
-    return new SparseVector (idxs.toNativeArray (), vals.toNativeArray ());
+    return new SparseVector (idxs.toArray (), vals.toArray ());
   }
 
   public void writeWeightsText (Writer writer)

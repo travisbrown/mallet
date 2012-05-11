@@ -14,6 +14,7 @@
 
 package cc.mallet.types;
 
+import gnu.trove.map.hash.TObjectIntHashMap;
 import java.util.ArrayList;
 import java.io.*;
 import java.util.Iterator;
@@ -40,7 +41,7 @@ import java.rmi.dgc.VMID;
  */
 public class Alphabet implements Serializable
 {
-	gnu.trove.TObjectIntHashMap map;
+	TObjectIntHashMap map;
 	ArrayList entries;
 	boolean growthStopped = false;
 	Class entryClass = null;
@@ -48,7 +49,7 @@ public class Alphabet implements Serializable
 
 	public Alphabet (int capacity, Class entryClass)
 	{
-		this.map = new gnu.trove.TObjectIntHashMap (capacity);
+		this.map = new gnu.trove.map.hash.TObjectIntHashMap (capacity);
 		this.entries = new ArrayList (capacity);
 		this.entryClass = entryClass;
 		// someone could try to deserialize us into this image (e.g., by RMI).  Handle this.
@@ -81,7 +82,7 @@ public class Alphabet implements Serializable
 		//try {
 		// Wastes effort, because we over-write ivars we create
 		Alphabet ret = new Alphabet ();
-		ret.map = (gnu.trove.TObjectIntHashMap) map.clone();
+		ret.map = new TObjectIntHashMap(map);
 		ret.entries = (ArrayList) entries.clone();
 		ret.growthStopped = growthStopped;
 		ret.entryClass = entryClass;
@@ -267,7 +268,7 @@ public class Alphabet implements Serializable
 		int version = in.readInt ();
 		int size = in.readInt();
 		entries = new ArrayList (size);
-		map = new gnu.trove.TObjectIntHashMap (size);
+		map = new gnu.trove.map.hash.TObjectIntHashMap (size);
 		for (int i = 0; i < size; i++) {
 			Object o = in.readObject();
 			map.put (o, i);

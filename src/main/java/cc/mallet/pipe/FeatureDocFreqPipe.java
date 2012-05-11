@@ -1,7 +1,7 @@
 package cc.mallet.pipe;
 
 import cc.mallet.types.*;
-import gnu.trove.*;
+import gnu.trove.map.hash.TIntIntHashMap;
 import java.io.*;
 
 /** 

@@ -18,7 +18,8 @@ import java.util.zip.*;
 import java.io.*;
 import java.text.NumberFormat;
 
-import gnu.trove.*;
+import gnu.trove.map.hash.TIntIntHashMap;
+import gnu.trove.map.hash.TIntObjectHashMap;
 
 /**
  * Latent Dirichlet Allocation.

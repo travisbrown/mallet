@@ -6,6 +6,7 @@
    information, see the file `LICENSE' included with this distribution. */
 package cc.mallet.grmm.types;
 
+import gnu.trove.map.hash.TObjectIntHashMap;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -23,13 +24,13 @@ import java.util.Iterator;
  */
 public class BidirectionalIntObjectMap implements Serializable {
 
-  gnu.trove.TObjectIntHashMap map;
+  gnu.trove.map.hash.TObjectIntHashMap map;
   ArrayList entries;
   boolean growthStopped = false;
 
   public BidirectionalIntObjectMap (int capacity)
   {
-    this.map = new gnu.trove.TObjectIntHashMap (capacity);
+    this.map = new gnu.trove.map.hash.TObjectIntHashMap (capacity);
     this.entries = new ArrayList (capacity);
   }
 
@@ -40,7 +41,7 @@ public class BidirectionalIntObjectMap implements Serializable {
 
   public BidirectionalIntObjectMap (BidirectionalIntObjectMap other)
   {
-    map = (gnu.trove.TObjectIntHashMap) other.map.clone ();
+    map = new TObjectIntHashMap(other.map);
     entries = (ArrayList) other.entries.clone ();
     growthStopped = other.growthStopped;
   }
@@ -200,7 +201,7 @@ public class BidirectionalIntObjectMap implements Serializable {
     in.readInt ();  // int version
     int size = in.readInt ();
     entries = new ArrayList (size);
-    map = new gnu.trove.TObjectIntHashMap (size);
+    map = new gnu.trove.map.hash.TObjectIntHashMap (size);
     for (int i = 0; i < size; i++) {
       Object o = in.readObject ();
       map.put (o, i);

@@ -1065,12 +1065,12 @@ public class ParallelTopicModel implements Serializable {
 
 	public void topicPhraseXMLReport(PrintWriter out, int numWords) {
 		int numTopics = this.getNumTopics();
-		gnu.trove.TObjectIntHashMap<String>[] phrases = new gnu.trove.TObjectIntHashMap[numTopics];
+		gnu.trove.map.hash.TObjectIntHashMap<String>[] phrases = new gnu.trove.map.hash.TObjectIntHashMap[numTopics];
 		Alphabet alphabet = this.getAlphabet();
 		
 		// Get counts of phrases
 		for (int ti = 0; ti < numTopics; ti++)
-			phrases[ti] = new gnu.trove.TObjectIntHashMap<String>();
+			phrases[ti] = new gnu.trove.map.hash.TObjectIntHashMap<String>();
 		for (int di = 0; di < this.getData().size(); di++) {
 			TopicAssignment t = this.getData().get(di);
 			Instance instance = t.instance;
@@ -1153,7 +1153,7 @@ public class ParallelTopicModel implements Serializable {
 
 			// Print phrases
 			Object[] keys = phrases[ti].keys();
-			int[] values = phrases[ti].getValues();
+			int[] values = phrases[ti].values();
 			double counts[] = new double[keys.length];
 			for (int i = 0; i < counts.length; i++)	counts[i] = values[i];
 			double countssum = MatrixOps.sum (counts);	
